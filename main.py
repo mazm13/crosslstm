@@ -54,10 +54,10 @@ train_data[rndint][0].beautifyOutput()
 if __name__ == "__main__":
     args = parse_args()
 
-    print "-" * 80
+    print("-" * 80)
     for arg in vars(args):
-        print "key:{} = {}".format(arg, getattr(args, arg))
-    print "-" * 80
+        print("key:{} = {}".format(arg, getattr(args, arg)))
+    print("-" * 80)
 
     if args.use_glove:
         print("[INFO] Get glove embedding.")

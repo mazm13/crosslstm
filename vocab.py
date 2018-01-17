@@ -32,7 +32,7 @@ def buildVocab(force=False, sp='train'):
     vocab["<UNK>"] = 3 # add a PAD word? (for mask?)
     vocab["<PAD>"] = 4
 
-    with open(vocab_file, 'w') as fd:
+    with open(vocab_file, 'wb') as fd:
         pkl.dump(vocab, fd)
     return vocab
     

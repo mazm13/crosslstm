@@ -29,7 +29,7 @@ class Tree(object):
             out += "=%s" % self.word
         else:
             out += ":"
-        print out
+        print(out)
         for c in self.children:
             c.debug_out(level+1)
     
@@ -70,17 +70,17 @@ class Tree(object):
         if offx is None: offx = 0
         if offy is None: offy = 0
         
-        title_x = offx + (self._width - len(self.node_type))/2 + 1
-        if not isRoot: canvas[offy][offx + self._width/2] = '|'
+        title_x = offx + (self._width - len(self.node_type))//2 + 1
+        if not isRoot: canvas[offy][offx + self._width//2] = '|'
         canvas[offy+1][title_x:title_x+len(self.node_type)] = self.node_type
-        canvas[offy+2][offx + self._width/2] = '|'
-        canvas[offy+3][offx + self._width/2] = '|'
+        canvas[offy+2][offx + self._width//2] = '|'
+        canvas[offy+3][offx + self._width//2] = '|'
         
         if self.isMid():
             left_child_w, _ = self.children[0].getWidth()
             right_child_w, _ = self.children[-1].getWidth()
-            banner_x1 = offx + left_child_w/2
-            banner_x2 = banner_x1 + self._width - (left_child_w + right_child_w)/2
+            banner_x1 = offx + left_child_w//2
+            banner_x2 = banner_x1 + self._width - (left_child_w + right_child_w)//2
             canvas[offy+4][banner_x1:banner_x2] = '-'*(banner_x2 - banner_x1)
             offy += 5
             for c in self.children:
@@ -90,6 +90,6 @@ class Tree(object):
             canvas[offy+4][offx+1 : offx+1+len(self.raw_word)] = self.raw_word
         if isRoot:
             for i in range(len(canvas)):
-                print "".join(canvas[i])
+                print("".join(canvas[i]))
         
         

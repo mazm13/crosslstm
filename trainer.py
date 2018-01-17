@@ -39,7 +39,7 @@ def train(train_data, pair_net, criterion, optimizer, \
           use_cuda = None):
     mex = Metrics(num_classes)
     learning_rate = args.lr  # learning rate may update over step
-    idxs = range(len(train_data))
+    idxs = list(range(len(train_data)))
     iters = 1
     tmp_loss = 0.0
     history_metric = [[(0.0, 0.0, 0.0, 0.0)], [(0.0, 0.0, 0.0, 0.0)], [(0.0, 0.0, 0.0, 0.0)]] # train,dev,test
@@ -47,7 +47,7 @@ def train(train_data, pair_net, criterion, optimizer, \
 
     start_time = time.time()
     pair_net.zero_grad()
-    for ep in xrange(cur_epoch, epoch):
+    for ep in range(cur_epoch, epoch):
         random.shuffle(idxs)
         save_flag = False
         for i,idx in enumerate(idxs):
@@ -135,7 +135,7 @@ def checkTrainedPerformance(args, vocab_size, ep, lr, history_metric, sp,
 def checkLast(args, vocab_size):
     
     paths = []
-    for x in xrange(args.epoch):
+    for x in range(args.epoch):
         file_path = file_pattern.format(args.input_dim, args.hidden_dim, 
                  args.pair_dim, vocab_size, args.word_scale,  
                  "glove" if args.use_glove else "",
